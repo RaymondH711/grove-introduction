@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GROVE — 單頁戰略頁</title>
+<meta name="description" content="GROVE — AI-powered Knowledge Layer for frontline teams. Internal strategy one-pager.">
+<link rel="icon" type="image/png" href="/assets/grove-g-logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --ink:#15171E;
+    --ink-soft:#3D4048;
+    --muted:#5B5E66;
+    --line:#E1E1DC;
+    --bg:#FAFAF7;
+    --bg-panel:#F3F2EE;
+    --accent:#4F46E5;
+    --accent-deep:#372FA0;
+    --accent-soft:#EEEEFB;
+    --accent-line:#C7C5EF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans','Noto Sans TC', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,p,div{margin:0;}
+  a{color:inherit;text-decoration:none;}
+
+  .nav-brand{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.1em;color:var(--ink);}
+  .nav-link{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.02em;color:var(--ink-soft);}
+  .nav-link:hover{color:var(--accent-deep);}
+
+  @media (max-width: 640px){
+    .nav-links{gap:18px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:60vw;}
+    .nav-links::-webkit-scrollbar{display:none;}
+    .nav-link{white-space:nowrap;}
+  }
+
+  .eyebrow{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;color:var(--ink-soft);}
+  .section-label{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:9px;}
+  .hero-title{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-weight:500;font-size:50px;line-height:1.3;letter-spacing:0.01em;color:var(--ink);margin:20px 0 22px;}
+  .hero-sub{font-size:18px;line-height:1.85;color:var(--ink-soft);max-width:520px;margin:0 0 32px;}
+  .hero-position{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:21px;font-weight:500;line-height:1.65;color:var(--ink);}
+
+  .section-title{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-weight:500;font-size:32px;line-height:1.45;letter-spacing:0.01em;color:var(--ink);margin:0 0 20px;}
+  .section-lead{font-size:17px;line-height:1.9;color:var(--ink-soft);max-width:640px;margin:0 0 44px;}
+
+  .col-label{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--muted);margin-bottom:18px;}
+  .plain-item{font-size:16px;color:var(--ink-soft);padding:10px 0;border-bottom:1px solid var(--line);}
+  .plain-item:last-of-type{border-bottom:none;}
+  .col-caption{font-size:14px;color:var(--muted);margin-top:18px;}
+  .quote{font-size:17px;line-height:1.75;color:var(--ink);margin:0 0 18px;padding-bottom:18px;border-bottom:1px solid var(--line);}
+  .quote:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .col-highlight{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:19px;font-weight:500;color:var(--ink);margin-top:26px;line-height:1.7;}
+  .hl-accent{color:var(--accent-deep);font-weight:600;}
+
+  .tier-label{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.1em;color:var(--muted);}
+  .tier-item{font-size:15px;color:var(--ink-soft);}
+  .connector-line{width:1px;height:28px;background:var(--line);}
+  .connector-arrow{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--muted);}
+
+  .grove-name{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:25px;font-weight:600;color:var(--accent-deep);letter-spacing:0.01em;}
+  .grove-sub{font-size:13px;color:var(--ink-soft);letter-spacing:0.02em;}
+  .grove-flow{font-size:14px;color:var(--ink-soft);letter-spacing:0.01em;text-align:center;}
+  .status-mini{font-size:11px;color:var(--muted);padding:3px 11px;border:1px solid var(--line);border-radius:12px;}
+
+  .principle{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:20px;font-weight:500;color:var(--ink);text-align:center;margin-top:40px;}
+  .principle-muted{color:var(--muted);font-weight:400;}
+
+  .life-title{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+  .life-desc{font-size:13px;color:var(--muted);line-height:1.6;max-width:185px;}
+  .life-arrow{color:var(--muted);font-size:16px;}
+
+  .domain-role{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:12px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:4px;}
+  .domain-scope{font-size:12px;color:var(--muted);}
+
+  .stage-label{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;color:var(--muted);margin-bottom:10px;}
+  .stage-role{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:16px;font-weight:600;color:var(--accent-deep);letter-spacing:0.04em;margin-bottom:18px;}
+  .stage-item{font-size:14px;color:var(--ink-soft);line-height:1.5;margin-bottom:9px;}
+  .stage-caption{font-size:13px;color:var(--muted);margin-top:16px;}
+
+  .ending-title{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:32px;font-weight:500;color:var(--ink);text-align:center;line-height:1.55;margin:0 0 24px;}
+  .ending-sub{font-size:15px;color:var(--ink-soft);text-align:center;margin-bottom:10px;}
+  .ending-sub-en{font-size:12px;letter-spacing:0.08em;color:var(--muted);text-align:center;}
+
+  .glimpse-label{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.1em;color:var(--accent-deep);margin-bottom:10px;}
+  .glimpse-heading{font-family:'Space Grotesk','Noto Sans TC',sans-serif;font-weight:500;font-size:23px;color:var(--ink);margin-bottom:12px;line-height:1.4;}
+  .glimpse-body{font-size:15px;line-height:1.9;color:var(--ink-soft);max-width:380px;}
+  .glimpse-shot{width:100%;height:auto;display:block;border:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<div style="width:100%;background:var(--bg);">
+
+  <!-- NAV -->
+  <div style="width:100%;position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:10;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:9px;">
+        <img src="/assets/grove-g-logo.png" alt="GROVE" style="width:18px;height:18px;display:block;">
+        <span class="nav-brand">GROVE</span>
+      </div>
+      <div class="nav-links" style="display:flex;gap:32px;">
+        <a class="nav-link" href="#why">Why</a>
+        <a class="nav-link" href="#layer">AI Layer</a>
+        <a class="nav-link" href="#growth">Growth</a>
+        <a class="nav-link" href="#milestone">Milestones</a>
+        <a class="nav-link" href="#culture">Vision</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" style="width:100%;padding:88px 0 64px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px;display:flex;gap:64px;align-items:flex-start;">
+
+      <div style="flex:1 1 660px;max-width:660px;">
+        <div class="eyebrow" style="display:flex;align-items:center;gap:9px;">
+          <img src="/assets/grove-g-logo.png" alt="GROVE" style="width:16px;height:16px;display:block;">
+          <span>GROVE ／ KM 平台規劃總覽</span>
+        </div>
+        <h1 class="hero-title">打造前線團隊共用的<br>知識查詢入口。</h1>
+        <p class="hero-sub">GROVE 將分散在不同系統與文件中的內部知識，透過 AI Search 與 Knowledge Structure，轉換成前線更容易找到、理解與重複使用的答案。<br><br>需要深入時，仍可回到原始文件查看完整細節。</p>
+        <div style="display:flex;gap:16px;align-items:stretch;">
+          <div style="width:2px;background:var(--accent);flex-shrink:0;"></div>
+          <p class="hero-position">先找到答案。<br>需要細節時，再回到原始來源。</p>
+        </div>
+      </div>
+
+      <div style="flex:1 1 380px;max-width:380px;display:flex;flex-direction:column;align-items:center;padding-top:10px;">
+        <div class="tier-item" style="font-weight:500;">客戶問題</div>
+        <div class="connector-line"></div>
+        <div class="connector-arrow"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin:2px 0;">
+          <div style="background:var(--ink);color:#fff;padding:20px 44px;text-align:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;letter-spacing:0.03em;">GROVE</div>
+          </div>
+          <div class="tier-label" style="margin-top:6px;">AI KNOWLEDGE SEARCH</div>
+          <div style="font-size:12px;color:var(--muted);">LLM + Retrieval / RAG</div>
+        </div>
+        <div class="connector-line"></div>
+        <div class="connector-arrow"></div>
+        <div class="tier-item" style="font-weight:500;">快速找到答案與方向</div>
+        <div class="connector-line"></div>
+        <div class="connector-arrow"></div>
+        <div class="tier-item" style="color:var(--muted);">Knowledge Sources</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 01 — WHY GROVE -->
+  <section id="why" style="width:100%;padding:68px 0;border-top:1px solid var(--line);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
+      <div class="section-label">01 — 為什麼需要 GROVE</div>
+      <h2 class="section-title">我們已經有文件了，<br>為什麼還需要 GROVE？</h2>
+      <p class="section-lead">問題不在於文件不夠多，<br><br>而在於客戶提問時，前線團隊是否能快速找到<br>「現在可以怎麼回答」以及「答案來自哪裡」。</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:60px;">
+        <div>
+          <div class="col-label">我們已經擁有的</div>
+          <div class="plain-item">Product Wiki</div>
+          <div class="plain-item">API 文件</div>
+          <div class="plain-item">Notion</div>
+          <div class="plain-item">Feature Toggle ／ Feature List</div>
+          <div class="plain-item">Infra ＆ Security 文件</div>
+          <div class="plain-item">內部知識</div>
+          <div class="plain-item">NotebookLM 等 AI 工具</div>
+          <p class="col-caption">適合用來儲存、閱讀、研究與查找詳細資訊。</p>
+        </div>
+        <div style="background:var(--line);"></div>
+        <div>
+          <div class="col-label">前線真正會問的</div>
+          <p class="quote">「Omnichat 有哪些安全認證、個資保護措施？」</p>
+          <p class="quote">「會員等級異動可以同步到 Omnichat？」</p>
+          <p class="quote">「LINE LON 申請流程？」</p>
+          <p class="quote">「有沒有汽車相關產業的成功案例？」</p>
+          <p class="col-highlight">他們不需要從零翻文件，<br>他們需要一個能<span class="hl-accent">快速導航知識的入口</span>。</p>
+        </div>
+      </div>
+
+      <div style="margin-top:44px;border-top:1px solid var(--line);padding-top:28px;display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:1 1 280px;">
+          <div class="col-label" style="margin-bottom:10px;">GENERAL AI ／ NOTEBOOKLM</div>
+          <div style="font-size:14px;color:var(--ink-soft);line-height:1.75;">與文件對話<br>研究、摘要、探索內容</div>
+        </div>
+        <div style="align-self:center;font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted);padding-top:22px;">VS.</div>
+        <div style="flex:1 1 280px;">
+          <div class="col-label" style="margin-bottom:10px;">GROVE</div>
+          <div style="font-size:14px;color:var(--ink-soft);line-height:1.75;">從前線問題出發<br>AI Search → Knowledge → Source → 後續更新</div>
+        </div>
+      </div>
+      <p style="margin-top:22px;font-size:13px;color:var(--muted);text-align:center;">AI tools help us explore documents. <span style="color:var(--ink-soft);">GROVE helps frontline teams find usable knowledge.</span></p>
+    </div>
+  </section>
+
+  <!-- SECTION 02 — AI KNOWLEDGE LAYER -->
+  <section id="layer" style="width:100%;padding:76px 0;border-top:1px solid var(--line);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
+      <div class="section-label">
+        <img src="/assets/grove-g-logo.png" alt="GROVE" style="width:14px;height:14px;display:block;">
+        <span>02 — AI KNOWLEDGE LAYER</span>
+      </div>
+      <h2 class="section-title">GROVE 不取代文件，<br>而是用 AI 連結人與正確的知識。</h2>
+
+      <div style="display:flex;flex-direction:column;align-items:center;margin-top:52px;">
+        <div class="tier-label" style="margin-bottom:16px;">前線團隊</div>
+        <div style="display:flex;gap:40px;">
+          <span class="tier-item">SKA</span>
+          <span class="tier-item">Vertical</span>
+          <span class="tier-item">AM</span>
+          <span class="tier-item">CS</span>
+          <span class="tier-item">BD</span>
+        </div>
+
+        <div class="connector-line" style="height:32px;margin-top:20px;"></div>
+        <div class="connector-arrow"></div>
+
+        <div style="width:100%;max-width:860px;background:var(--accent-soft);border:1px solid var(--accent-line);padding:34px 48px;display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:2px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div class="grove-name">GROVE</div>
+            <div class="grove-sub">AI-powered Knowledge Layer</div>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;">
+            <span class="tier-label">AI SEARCH</span>
+            <span style="font-size:13px;color:var(--ink-soft);">Understand · Retrieve · Match</span>
+          </div>
+          <div class="grove-flow">問題&nbsp;&nbsp;→&nbsp;&nbsp;簡答&nbsp;&nbsp;→&nbsp;&nbsp;詳細知識&nbsp;&nbsp;→&nbsp;&nbsp;Source&nbsp;&nbsp;→&nbsp;&nbsp;相關問題</div>
+          <div style="display:flex;gap:10px;">
+            <span class="status-mini">Confirmed</span>
+            <span class="status-mini">Needs Confirmation</span>
+          </div>
+        </div>
+
+        <div class="connector-line" style="height:32px;margin-top:20px;"></div>
+        <div class="connector-arrow"></div>
+
+        <div class="tier-label" style="margin-top:16px;margin-bottom:16px;">知識來源</div>
+        <div style="display:flex;gap:36px;flex-wrap:wrap;justify-content:center;max-width:960px;">
+          <span class="tier-item">Product Wiki</span>
+          <span class="tier-item">API 文件</span>
+          <span class="tier-item">Notion</span>
+          <span class="tier-item">Feature List</span>
+          <span class="tier-item">Infra ／ Security 文件</span>
+          <span class="tier-item">其他內部來源</span>
+        </div>
+      </div>
+
+      <p class="principle">GROVE 先帶你找到答案，<span class="principle-muted">Source 再提供完整細節。</span></p>
+
+      <div style="margin-top:64px;border-top:1px solid var(--line);padding-top:56px;display:flex;flex-direction:column;gap:72px;">
+
+        <div style="display:flex;gap:64px;align-items:center;flex-wrap:wrap;">
+          <div style="flex:1 1 360px;max-width:400px;">
+            <div class="glimpse-label">搜尋入口</div>
+            <div class="glimpse-heading">打開 GROVE，直接搜尋</div>
+            <p class="glimpse-body">前線不用學新工具。打開 GROVE 首頁，輸入問題、關鍵字或貼上完整句子，熱門問題與搜尋結果同時出現。</p>
+          </div>
+          <div style="flex:1 1 460px;max-width:560px;">
+            <img class="glimpse-shot" src="/assets/screenshot-home.png" alt="GROVE 首頁搜尋">
+          </div>
+        </div>
+
+        <div style="display:flex;gap:64px;align-items:center;flex-wrap:wrap-reverse;">
+          <div style="flex:1 1 460px;max-width:560px;">
+            <img class="glimpse-shot" src="/assets/screenshot-article.png" alt="GROVE 知識詳情頁">
+          </div>
+          <div style="flex:1 1 360px;max-width:400px;">
+            <div class="glimpse-label">完整脈絡</div>
+            <div class="glimpse-heading">看到答案，也看到來源</div>
+            <p class="glimpse-body">簡答之外，同一頁往下就能看到詳細知識、確認的資料流向與原始文件連結——不需要再切換到別的系統找答案。</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:64px;align-items:center;flex-wrap:wrap;">
+          <div style="flex:1 1 360px;max-width:420px;">
+            <div class="glimpse-label">整合進日常工具</div>
+            <div class="glimpse-heading">在原本的對話裡，就能問 GROVE</div>
+            <p class="glimpse-body">不用切換系統。GROVE 可以整合進前線已經在用的對話工具，問題直接在日常工作流程裡問、拿到答案。</p>
+          </div>
+          <div style="flex:1 1 260px;max-width:280px;">
+            <img class="glimpse-shot" src="/assets/screenshot-chat.png" alt="GROVE 整合進日常對話工具">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 03 — KNOWLEDGE GROWTH -->
+  <section id="growth" style="width:100%;padding:76px 0;border-top:1px solid var(--line);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
+      <div class="section-label">03 — 知識如何成長</div>
+      <h2 class="section-title">讓真實問題，<br>逐步變成可共享的知識。</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;align-items:start;margin-top:48px;">
+        <div>
+          <div class="life-title">提問</div>
+          <div class="life-desc">來自前線團隊的真實問題</div>
+        </div>
+        <div class="life-arrow" style="text-align:center;">→</div>
+        <div>
+          <div class="life-title">整理</div>
+          <div class="life-desc">把重複出現的問題，整理成可延續使用的 Knowledge</div>
+        </div>
+        <div class="life-arrow" style="text-align:center;">→</div>
+        <div>
+          <div class="life-title">Domain Review</div>
+          <div class="life-desc">由最了解該領域的夥伴補充、確認與優化</div>
+        </div>
+        <div class="life-arrow" style="text-align:center;">→</div>
+        <div>
+          <div class="life-title">形成知識</div>
+          <div class="life-desc">在 GROVE 中成為可查找、可延續使用的內容</div>
+        </div>
+        <div class="life-arrow" style="text-align:center;">→</div>
+        <div>
+          <div class="life-title">回饋與更新</div>
+          <div class="life-desc">隨產品、案例與情境持續調整</div>
+        </div>
+      </div>
+
+      <div style="margin-top:36px;border-top:1px solid var(--line);padding-top:22px;">
+        <div class="col-label" style="margin-bottom:14px;">DOMAIN COLLABORATION ／ 各團隊帶來最熟悉的 Knowledge</div>
+        <div style="display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;">
+          <div><span class="domain-role">PM</span><span class="domain-scope">產品／功能／限制</span></div>
+          <div><span class="domain-role">AM</span><span class="domain-scope">客戶使用情境</span></div>
+          <div><span class="domain-role">CS</span><span class="domain-scope">導入方式／常見問題</span></div>
+          <div><span class="domain-role">Infra</span><span class="domain-scope">安全／基礎架構</span></div>
+          <div><span class="domain-role">Presales</span><span class="domain-scope">解決方案／整合／API 情境</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 04 — GROVE PLATFORM MILESTONE -->
+  <section id="milestone" style="width:100%;padding:76px 0;border-top:1px solid var(--line);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
+      <div class="section-label">04 — 平台里程碑</div>
+      <h2 class="section-title">GROVE 平台階段式里程碑</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:start;margin-top:48px;">
+        <div style="text-align:center;">
+          <div class="stage-label">NOW</div>
+          <div class="stage-role">MVP</div>
+          <div class="stage-item">建立核心架構</div>
+          <div class="stage-item">建立 AI Search</div>
+          <div class="stage-item">整理高頻問題</div>
+          <div class="stage-item">建立初步 Knowledge</div>
+          <div class="stage-item">形成前線搜尋入口</div>
+          <div class="stage-caption">GROVE 已經可以開始被使用。</div>
+        </div>
+        <div style="text-align:center;color:var(--muted);font-size:18px;padding-top:2px;">→</div>
+        <div style="text-align:center;">
+          <div class="stage-label">NEXT</div>
+          <div class="stage-role">PHASE 1</div>
+          <div class="stage-item">跨團隊補充 Knowledge</div>
+          <div class="stage-item">擴充更多 Domain</div>
+          <div class="stage-item">增加問題與使用回饋</div>
+          <div class="stage-item">建立 Review ／ Update Flow</div>
+          <div class="stage-item">開始形成 Knowledge Maintain 機制</div>
+        </div>
+        <div style="text-align:center;color:var(--muted);font-size:18px;padding-top:2px;">→</div>
+        <div style="text-align:center;">
+          <div class="stage-label">FUTURE</div>
+          <div class="stage-role">PHASE 2</div>
+          <div class="stage-item">形成穩定 Knowledge 更新節奏</div>
+          <div class="stage-item">各 Domain 持續補充專業內容</div>
+          <div class="stage-item">Knowledge 與 Source 持續串接</div>
+          <div class="stage-item">GROVE 成為跨團隊共享的 AI Knowledge Platform</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL — CULTURE -->
+  <section id="culture" style="width:100%;padding:76px 0 96px;border-top:1px solid var(--line);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px;text-align:center;">
+      <div style="display:inline-block;background:var(--ink);color:#fff;padding:16px 36px;margin:0 auto 40px;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;letter-spacing:0.03em;">GROVE</div>
+      </div>
+      <h3 class="ending-title">每個團隊帶來自己的專業，<br>GROVE 讓這些知識一起成長。</h3>
+      <p class="ending-sub">AI 搜尋・清楚導航・連結來源・持續成長</p>
+      <p class="ending-sub-en">SINGLE ENTRY&nbsp;&nbsp;·&nbsp;&nbsp;AI SEARCH&nbsp;&nbsp;·&nbsp;&nbsp;CONNECTED SOURCES&nbsp;&nbsp;·&nbsp;&nbsp;SHARED GROWTH</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
