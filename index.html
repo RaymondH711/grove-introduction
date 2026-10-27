@@ -9,16 +9,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap">
 <style>
   :root{
-    --ink:#15171E;
-    --ink-soft:#3D4048;
-    --muted:#5B5E66;
-    --line:#E1E1DC;
-    --bg:#FAFAF7;
-    --bg-panel:#F3F2EE;
-    --accent:#4F46E5;
-    --accent-deep:#372FA0;
-    --accent-soft:#EEEEFB;
-    --accent-line:#C7C5EF;
+    --ink:#130F40;
+    --ink-soft:#2B3C45;
+    --muted:#5C6F78;
+    --line:#E2E6E8;
+    --bg:#FAFAFB;
+    --bg-panel:#F2F3F6;
+    --accent:#6366F1;
+    --accent-deep:#2D00AF;
+    --accent-soft:#EDEDFC;
+    --accent-line:#C9C8F5;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -281,7 +281,7 @@
           <div style="flex:1 1 360px;max-width:420px;">
             <div class="glimpse-label">整合進日常工具</div>
             <div class="glimpse-heading">在原本的對話裡，就能問 GROVE</div>
-            <p class="glimpse-body">不用切換系統。GROVE 可以整合進前線已經在用的對話工具，問題直接在日常工作流程裡問、拿到答案。</p>
+            <p class="glimpse-body">不用切換系統。GROVE 可以整合進前線已經在用的對話工具（例如 LINE），問題直接在日常工作流程裡問、拿到答案。</p>
           </div>
           <div style="flex:1 1 260px;max-width:280px;">
             <img class="glimpse-shot" src="./public/assets/screenshot-chat.png" alt="GROVE 整合進日常對話工具">
@@ -297,6 +297,7 @@
     <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
       <div class="section-label">03 — 知識如何成長</div>
       <h2 class="section-title">讓真實問題，<br>逐步變成可共享的知識。</h2>
+      <p class="section-lead">AI Search 已經驗證可行——透過 LLM + Retrieval（RAG），結合 Titan Embeddings 與 Nova Micro，不同團隊即使問法不同，也能找到對應的 Knowledge。<br><br>下一階段的重點，不再是「搜尋做不做得到」，而是知識怎麼持續被補充、由誰補充最合適，以及修改後如何重新確認、重新 Index。</p>
 
       <div style="display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;align-items:start;margin-top:48px;">
         <div>
@@ -349,7 +350,7 @@
           <div class="stage-label">NOW</div>
           <div class="stage-role">MVP</div>
           <div class="stage-item">建立核心架構</div>
-          <div class="stage-item">建立 AI Search</div>
+          <div class="stage-item">完成 AI Search（LLM + RAG）</div>
           <div class="stage-item">整理高頻問題</div>
           <div class="stage-item">建立初步 Knowledge</div>
           <div class="stage-item">形成前線搜尋入口</div>
@@ -362,8 +363,9 @@
           <div class="stage-item">跨團隊補充 Knowledge</div>
           <div class="stage-item">擴充更多 Domain</div>
           <div class="stage-item">增加問題與使用回饋</div>
-          <div class="stage-item">建立 Review ／ Update Flow</div>
+          <div class="stage-item">推出簡單的 Editing ／ Admin Flow</div>
           <div class="stage-item">開始形成 Knowledge Maintain 機制</div>
+          <div class="stage-caption">修改後可重新 Index，知識維持在最新狀態。</div>
         </div>
         <div style="text-align:center;color:var(--muted);font-size:18px;padding-top:2px;">→</div>
         <div style="text-align:center;">
